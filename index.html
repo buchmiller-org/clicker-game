@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+button {
+    cursor: pointer;
+    transition: border-color 0.125s ease;
+    border: 3px solid black;
+    padding: 15px 30px
+}
+button:hover {
+    border-color: yellow;
+}
+button:active {
+    border-color: purple;
+}
+</style>
+</head>
+<body>
+    <h1>Clicker</h1>
+    <p id="display"></p>
+    <button onclick="more()" id="clickbutton">Click</button>
+    <button onclick="save()" id="saver">Save</button>
+    <button onclick="restart()" id="restarter">Restart</button>
+    <button onclick="clickmore()" style="display: none;" id="visableclick">Click power/50/</button>
+    <button onclick="cpsupgrade()" style="display: none;" id="visablecps">Clicks Per Second/100/</button>
+<script>
+    let visableclick1 = 0;
+    let money = 0;
+    let power = 1;
+    let cps = 0;
+    let visablecps1 = 0;
+    document.getElementById("visablecps").style.color = "white";
+    document.getElementById("visableclick").style.color = "white";
+    document.getElementById("clickbutton").style.backgroundColor = "aqua";
+    document.getElementById("saver").style.backgroundColor = "lime";
+    document.getElementById("restarter").style.backgroundColor = "darkred";
+    document.getElementById("restarter").style.color = "white";
+    if (localStorage.getItem("money")) {
+        money = parseInt(localStorage.getItem("money"), 10);
+        visableclick1 = parseInt(localStorage.getItem("visableclick1"), 10);
+        power = parseInt(localStorage.getItem("power"), 10);
+        visablecps1 = parseInt(localStorage.getItem("visablecps1"), 10);
+        cps = parseInt(localStorage.getItem("cps"), 10);
+    }
+    if (money < 50) {
+            document.getElementById("visableclick").style.backgroundColor = "red";
+        }
+    if (money < 100) {
+        document.getElementById("visablecps").style.backgroundColor = "red";
+    };
+    if (money >= 50) {
+        document.getElementById("visableclick").style.backgroundColor = "green";
+    }
+    if (money >= 100) {
+        document.getElementById("visablecps").style.backgroundColor = "green";
+    }
+    if (visableclick1 === 1) {
+        document.getElementById("visableclick").style.display = "block";
+    }
+    if (visablecps1 === 1) {
+        document.getElementById("visablecps").style.display = "block";
+    }
+    document.getElementById("display").textContent = `${money}`;
+    function more() {
+        money += power
+        document.getElementById("display").textContent = `${money}`;
+        if (money >= 50) {
+            visableclick1 = 1
+            document.getElementById("visableclick").style.backgroundColor = "green";
+        }
+        if (visableclick1 === 1) {
+            document.getElementById("visableclick").style.display = "block";
+        }
+        if (money >= 100) {
+            visablecps1 = 1
+            document.getElementById("visablecps").style.backgroundColor = "green";
+        }
+        if (visablecps1 === 1) {
+            document.getElementById("visablecps").style.display = "block";
+        }
+    }
+    function save() {
+        localStorage.setItem("money", money);
+        localStorage.setItem("visableclick1", visableclick1);
+        localStorage.setItem("power", power);
+        localStorage.setItem("visablecps1", visablecps1);
+        localStorage.setItem("cps", cps);
+        console.log("money: " + money)
+        console.log("click upgrade visable: " + visableclick1)
+        console.log("click power: " + power)
+        console.log("clicks per second upgrade visable: " + visablecps1)
+        console.log("clicks per second: " + cps)
+    }
+    function restart() {
+        money = 0
+        visableclick1 = 0
+        power = 1
+        cps = 0
+        visablecps1 = 0
+        save()
+        document.getElementById("visableclick").style.display = "none";
+        document.getElementById("display").textContent = `${money}`;
+        document.getElementById("visablecps").style.display = "none";
+    }
+    function clickmore() {
+        if (money >= 50)
+            money -= 50;
+            power += 1;
+            document.getElementById("display").textContent = `${money}`;
+        if (money < 50) {
+            document.getElementById("visableclick").style.backgroundColor = "red";
+        }
+        if (money < 100) {
+            document.getElementById("visablecps").style.backgroundColor = "red";
+        };
+    };
+    const timerId = setInterval(function() {
+        money += cps;
+        document.getElementById("display").textContent = `${money}`;
+        if (money >= 50) {
+            document.getElementById("visableclick").style.backgroundColor = "green";
+        if (money >= 100) {
+            document.getElementById("visablecps").style.backgroundColor = "green";
+        }
+        }
+    }, 1000);
+    function cpsupgrade() {
+        if (money >= 100) {
+            money -= 100;
+            cps += 1;
+            document.getElementById("display").textContent = `${money}`;
+        if (money < 50) {
+            document.getElementById("visableclick").style.backgroundColor = "red";
+        }
+        if (money < 100) {
+            document.getElementById("visablecps").style.backgroundColor = "red";
+        };
+        };
+    };
+</script>
+</body>
+</html>
