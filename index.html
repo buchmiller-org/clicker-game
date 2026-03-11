@@ -78,7 +78,7 @@ button:active {
     document.getElementById("clickpower").textContent = `click power: ${power}`;
     function more() {
         money += power
-        document.getElementById("display").textContent = `${money}`;
+        document.getElementById("display").textContent = `money: $${money}`;
         if (money >= 50) {
             visableclick1 = 1
             document.getElementById("visableclick").style.backgroundColor = "green";
@@ -129,7 +129,7 @@ button:active {
             power += 1;
             document.getElementById("clicks per second").textContent = `clicks per second: ${cps}`;
             document.getElementById("clickpower").textContent = `click power: ${power}`;
-            document.getElementById("display").textContent = `${money}`;
+            document.getElementById("display").textContent = `money: $${money}`;
         if (money < 50) {
             document.getElementById("visableclick").style.backgroundColor = "red";
         }
@@ -139,7 +139,7 @@ button:active {
     };
     const timerId = setInterval(function() {
         money += cps;
-        document.getElementById("display").textContent = `${money}`;
+        document.getElementById("display").textContent = `money: $${money}`;
         if (money >= 50) {
             document.getElementById("visableclick").style.backgroundColor = "green";
         if (money >= 100) {
@@ -151,7 +151,7 @@ button:active {
         if (money >= 100) {
             money -= 100;
             cps += 1;
-            document.getElementById("display").textContent = `${money}`;
+            document.getElementById("display").textContent = `money: $${money}`;
             document.getElementById("clicks per second").textContent = `clicks per second: ${cps}`;
             document.getElementById("clickpower").textContent = `click power: ${power}`;
         if (money < 50) {
