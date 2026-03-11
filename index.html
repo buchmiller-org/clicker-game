@@ -38,9 +38,17 @@ button:active {
     document.getElementById("restarter").style.color = "white";
     if (localStorage.getItem("money")) {
         money = parseInt(localStorage.getItem("money"), 10);
+    }
+    if (localStorage.getItem("visableclick1")) {
         visableclick1 = parseInt(localStorage.getItem("visableclick1"), 10);
+    }
+    if (localStorage.getItem("power")) {
         power = parseInt(localStorage.getItem("power"), 10);
+    }
+    if (localStorage.getItem("visablecps1")) {
         visablecps1 = parseInt(localStorage.getItem("visablecps1"), 10);
+    }
+    if (localStorage.getItem("cps")) {
         cps = parseInt(localStorage.getItem("cps"), 10);
     }
     if (money < 50) {
