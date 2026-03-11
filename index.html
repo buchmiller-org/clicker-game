@@ -19,6 +19,8 @@ button:active {
 <body>
     <h1>Clicker</h1>
     <p id="display"></p>
+    <p style="display: none;" id="clickpower"></p>
+    <p style="display: none;" id="clicks per second"></p>
     <button onclick="more()" id="clickbutton">Click</button>
     <button onclick="save()" id="saver">Save</button>
     <button onclick="restart()" id="restarter">Restart</button>
@@ -65,17 +67,22 @@ button:active {
     }
     if (visableclick1 === 1) {
         document.getElementById("visableclick").style.display = "block";
+        document.getElementById("clickpower").style.display = "block";
     }
     if (visablecps1 === 1) {
         document.getElementById("visablecps").style.display = "block";
+        document.getElementById("clicks per second").style.display = "block";
     }
-    document.getElementById("display").textContent = `${money}`;
+    document.getElementById("display").textContent = `money: $${money}`;
+    document.getElementById("clicks per second").textContent = `clicks per second: ${cps}`;
+    document.getElementById("clickpower").textContent = `click power: ${power}`;
     function more() {
         money += power
         document.getElementById("display").textContent = `${money}`;
         if (money >= 50) {
             visableclick1 = 1
             document.getElementById("visableclick").style.backgroundColor = "green";
+            document.getElementById("clickpower").style.display = "block";
         }
         if (visableclick1 === 1) {
             document.getElementById("visableclick").style.display = "block";
@@ -83,6 +90,7 @@ button:active {
         if (money >= 100) {
             visablecps1 = 1
             document.getElementById("visablecps").style.backgroundColor = "green";
+            document.getElementById("clicks per second").style.display = "block";
         }
         if (visablecps1 === 1) {
             document.getElementById("visablecps").style.display = "block";
@@ -110,11 +118,17 @@ button:active {
         document.getElementById("visableclick").style.display = "none";
         document.getElementById("display").textContent = `${money}`;
         document.getElementById("visablecps").style.display = "none";
+        document.getElementById("clickpower").style.display = "none";
+        document.getElementById("clicks per second").style.display = "none";
+        document.getElementById("clicks per second").textContent = `clicks per second: ${cps}`;
+        document.getElementById("clickpower").textContent = `click power: ${power}`;
     }
     function clickmore() {
         if (money >= 50)
             money -= 50;
             power += 1;
+            document.getElementById("clicks per second").textContent = `clicks per second: ${cps}`;
+            document.getElementById("clickpower").textContent = `click power: ${power}`;
             document.getElementById("display").textContent = `${money}`;
         if (money < 50) {
             document.getElementById("visableclick").style.backgroundColor = "red";
@@ -138,6 +152,8 @@ button:active {
             money -= 100;
             cps += 1;
             document.getElementById("display").textContent = `${money}`;
+            document.getElementById("clicks per second").textContent = `clicks per second: ${cps}`;
+            document.getElementById("clickpower").textContent = `click power: ${power}`;
         if (money < 50) {
             document.getElementById("visableclick").style.backgroundColor = "red";
         }
