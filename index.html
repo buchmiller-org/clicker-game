@@ -124,12 +124,13 @@ button:active {
         document.getElementById("clickpower").textContent = `click power: ${power}`;
     }
     function clickmore() {
-        if (money >= 50)
+        if (money >= 50) {
             money -= 50;
             power += 1;
             document.getElementById("clicks per second").textContent = `clicks per second: ${cps}`;
             document.getElementById("clickpower").textContent = `click power: ${power}`;
             document.getElementById("display").textContent = `money: $${money}`;
+        }
         if (money < 50) {
             document.getElementById("visableclick").style.backgroundColor = "red";
         }
