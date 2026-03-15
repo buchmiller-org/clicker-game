@@ -25,9 +25,9 @@ button:active {
     <button onclick="more()" id="clickbutton">Click</button>
     <button onclick="save()" id="saver">Save</button>
     <button onclick="restart()" id="restarter">Restart</button>
-    <button onclick="clickmore()" style="display: none;" id="visableclick">Click power/50/</button>
+    <button onclick="clickmore()" style="display: none;" id="visableclick"></button>
     <button onclick="cpsupgrade()" style="display: none;" id="visablecps">Clicks Per Second/100/</button>
-    <button onclick="clickmoreupgrade()" style="display: none;" id="visableclickupgrade">click power upgrader/50/</button>
+    <button onclick="clickmoreupgrade()" style="display: none;" id="visableclickupgrade"></button>
 <script>
     let visableclick1 = 0;
     let money = 0;
@@ -148,7 +148,7 @@ button:active {
             document.getElementById("clickpowerupgrade").textContent = `click power upgrader/${clickpowermoney}/`;
             document.getElementById("display").textContent = `money: $${money}`;
         };
-        if (money < 50) {
+        if (money < clickpowermoney) {
             document.getElementById("visableclick").style.backgroundColor = "red";
             document.getElementById("visableclickupgrade").style.backgroundColor = "red";
         };
