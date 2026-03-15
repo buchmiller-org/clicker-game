@@ -143,7 +143,7 @@ button:active {
     function clickmore() {
         if (money >= clickpowermoney) {
             money -= clickpowermoney;
-            power += 1;
+            power += clickpowermoney / 50;
             document.getElementById("clicks per second").textContent = `clicks per second: ${cps}`;
             document.getElementById("clickpower").textContent = `click power: ${power}`;
             document.getElementById("clickpowerupgrade").textContent = `click power upgrader/${clickpowermoney}/`;
