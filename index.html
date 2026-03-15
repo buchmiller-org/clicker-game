@@ -89,7 +89,7 @@ button:active {
     function more() {
         money += power
         document.getElementById("display").textContent = `money: $${money}`;
-        if (money >= 50) {
+        if (money >= clickpowermoney) {
             visableclick1 = 1
             document.getElementById("visableclick").style.backgroundColor = "green";
             document.getElementById("visableclickupgrade").style.backgroundColor = "green";
